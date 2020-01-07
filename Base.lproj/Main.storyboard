@@ -176,8 +176,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="counrWinSecondLabel" destination="aMU-o3-kXB" id="0al-UK-ISt"/>
                         <outlet property="countWinFirstLabel" destination="sxR-NS-uee" id="VkA-9s-fna"/>
+                        <outlet property="countWinSecondLabel" destination="aMU-o3-kXB" id="0al-UK-ISt"/>
                         <outlet property="fieldImage" destination="ewf-Tq-vqd" id="e4M-nw-ctw"/>
                         <outlet property="fieldView" destination="DZi-xr-8KJ" id="Jwf-JV-jha"/>
                         <outlet property="newGameButton" destination="P9N-KP-z9Y" id="wKg-3K-p6P"/>
