@@ -18,21 +18,111 @@ class ViewController: UIViewController {
     @IBOutlet weak var newGameButton: UIButton!
     @IBOutlet weak var countWinFirstLabel: UILabel!
     @IBOutlet weak var countWinSecondLabel: UILabel!
+    
     @IBAction func newGame(_ sender: UIButton) {
+        newGame()
     }
     @IBAction func action(_ sender: UIButton) {
+        actions(sender)
     }
     @IBOutlet var buttons: [UIButton]!
+    
+    var activePlayer = 1
+    var gameActive = true
+    var gameState: [Int] = [0,0,0, 0,0,0, 0,0,0]
+    var winsFirst = 0
+    var winsSecond = 0
+    var numbersMoves = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        newGameButton.isHidden = true
+        winnerLabel.isHidden = true
         // Do any additional setup after loading the view.
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         drowField()
     }
+    
+    func actions(_ sender: UIButton) {
+        if (gameState[sender.tag-1] == 0 && gameActive){
+            
+            if (activePlayer == 1 ) {
+                gameState[sender.tag-1] = activePlayer
+                sender.setBackgroundImage(UIImage(named: "X"), for: .normal)
+                sender.isEnabled = false
+                if winCombination(){
+                    gameActive = false
+                    winsFirst += 1
+                    countWinFirstLabel.textColor = .red
+                    helpWinnerLabel(text: "Победил \(playerOne.text ?? "первый игрок")")
+                }
+                activePlayer = 2
+                numbersMoves += 1
+            }
+            else {
+                gameState[sender.tag-1] = activePlayer
+                sender.setBackgroundImage(UIImage(named: "0"), for: .normal)
+                sender.isEnabled = false
+                if winCombination(){
+                    gameActive = false
+                    winsSecond += 1
+                    countWinSecondLabel.textColor = .red
+                    helpWinnerLabel(text: "Победил \(playerTwo.text ?? "второй игрок")")
+                }
+                activePlayer = 1
+                numbersMoves += 1
+            }
+            
+            if (numbersMoves == 9 && !winCombination())
+            {
+                helpWinnerLabel(text: "Ничья!")
+            }
+        }
+    }
+    
+    func helpWinnerLabel(text: String) {
+        winnerLabel.isHidden = false
+        winnerLabel.text = text
+        newGameButton.isHidden = false
+    }
+    
+    func winCombination() -> Bool{
+        let winningCombination = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
+        for comb in winningCombination{
+            if gameState[comb[0]] != 0 && gameState[comb[0]] == gameState[comb[1]] && gameState[comb[1]] == gameState[comb[2]]{
+                for i in comb {
+                    let button = buttons[i]
+                    button.isEnabled = true
+                }
+                return true
+            }
+        }
+        return false
+    }
+    
+    func newGame() {
+        activePlayer = 1
+        gameActive = true
+        gameState = [0,0,0, 0,0,0, 0,0,0]
+        numbersMoves = 0
+        
+        countWinSecondLabel.text = String(winsSecond)
+        countWinFirstLabel.text = String(winsFirst)
+        countWinFirstLabel.textColor = .black
+        countWinSecondLabel.textColor = .black
+        winnerLabel.text = ""
+        winnerLabel.isHidden = true
+        newGameButton.isHidden = true
+        
+        for button in buttons {
+            button.setBackgroundImage(nil, for: .normal)
+            button.isEnabled = true
+        }
+    }
 
-    func drowButtons() {
+    func drowField() {
         
         let border = CGFloat(6)
         
