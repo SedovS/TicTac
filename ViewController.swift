@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var playerTwo: UITextField!
     @IBOutlet weak var winnerLabel: UILabel!
     @IBOutlet weak var newGameButton: UIButton!
+    @IBOutlet weak var countWinFirstLabel: UILabel!
+    @IBOutlet weak var counrWinSecondLabel: UILabel!
     @IBAction func newGame(_ sender: UIButton) {
     }
     @IBAction func action(_ sender: UIButton) {
