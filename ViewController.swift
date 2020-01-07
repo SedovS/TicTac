@@ -29,31 +29,46 @@ class ViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        drowButtons()
+        drowField()
     }
 
     func drowButtons() {
         
-        let border = CGFloat(5)
-        let left = CGFloat(8)
-        let up = CGFloat(2)
+        let border = CGFloat(6)
         
-        let height = (view.frame.size.width - 2*(up) - 2*(border)) / 3
-        let width = (view.frame.size.width - 2*(left) - 2*(border)) / 3
+        let height = view.frame.size.width
+        let width = view.frame.size.width
+        let sizeButton = (width/3 - border/2)
         
-        var x = left
-        var y = up
+        var x = CGFloat(0)
+        var y = CGFloat(0)
         
+        //Отрисовка горизовтальных полосок
+        for i in 1...2 {
+            let view = UIView()
+            view.backgroundColor = .black
+            view.frame = CGRect(x: (width/3*CGFloat(i) - border/2) , y: 0, width: border, height: height)
+            fieldView.addSubview(view)
+        }
+        //Отрисовка вертикальных полосок
+        for i in 1...2 {
+            let view = UIView()
+            view.backgroundColor = .black
+            view.frame = CGRect(x: 0 , y: (height/3*CGFloat(i) - border/2), width: width, height: border)
+            fieldView.addSubview(view)
+        }
+
+
         buttons.sort { $0.tag < $1.tag }
-        
+        //Координаты кнопкам
         for button in buttons {
             if button.tag == 4 || button.tag == 7 {
-                x = left
-                y += height + border
+                x = CGFloat(0)
+                y += sizeButton + border
             }
             
-            button.frame = CGRect(x: x, y: y, width: width, height: height)
-            x += width + border
+            button.frame = CGRect(x: x, y: y, width: sizeButton, height: sizeButton)
+            x += sizeButton + border
         }
     }
     

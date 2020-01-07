@@ -18,9 +18,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DZi-xr-8KJ" userLabel="View Field">
                                 <rect key="frame" x="0.0" y="244" width="414" height="414"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="field" translatesAutoresizingMaskIntoConstraints="NO" id="ewf-Tq-vqd" userLabel="Field">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
-                                    </imageView>
                                     <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SA0-gn-B9b">
                                         <rect key="frame" x="145" y="139" width="128" height="140"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -92,10 +89,6 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="ewf-Tq-vqd" firstAttribute="top" secondItem="DZi-xr-8KJ" secondAttribute="top" id="5Wu-fS-RTe"/>
-                                    <constraint firstItem="ewf-Tq-vqd" firstAttribute="leading" secondItem="DZi-xr-8KJ" secondAttribute="leading" id="83k-Rn-h1c"/>
-                                    <constraint firstAttribute="trailing" secondItem="ewf-Tq-vqd" secondAttribute="trailing" id="Djr-no-0y8"/>
-                                    <constraint firstAttribute="bottom" secondItem="ewf-Tq-vqd" secondAttribute="bottom" id="FVn-37-sWt"/>
                                     <constraint firstAttribute="width" secondItem="DZi-xr-8KJ" secondAttribute="height" multiplier="1:1" id="IVX-is-F1M"/>
                                 </constraints>
                             </view>
@@ -178,7 +171,6 @@
                     <connections>
                         <outlet property="countWinFirstLabel" destination="sxR-NS-uee" id="VkA-9s-fna"/>
                         <outlet property="countWinSecondLabel" destination="aMU-o3-kXB" id="0al-UK-ISt"/>
-                        <outlet property="fieldImage" destination="ewf-Tq-vqd" id="e4M-nw-ctw"/>
                         <outlet property="fieldView" destination="DZi-xr-8KJ" id="Jwf-JV-jha"/>
                         <outlet property="newGameButton" destination="P9N-KP-z9Y" id="wKg-3K-p6P"/>
                         <outlet property="playerOne" destination="ey1-eu-W7y" id="Bwq-a2-ghb"/>
@@ -200,7 +192,4 @@
             <point key="canvasLocation" x="137.68115942028987" y="101.90217391304348"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="field" width="250.5" height="263"/>
-    </resources>
 </document>
